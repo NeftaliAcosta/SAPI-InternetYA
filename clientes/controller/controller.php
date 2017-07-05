@@ -803,6 +803,7 @@
 			}
 
 			public function crearTicketController($idUsuario, $asunto, $prioridad, $mensaje, $clase){
+				$modulo = "Ticket";
 				$idu= $idUsuario;
 				$as= $asunto;
 				$p = $prioridad;
@@ -813,7 +814,12 @@
 				$idencriptado = Datos::encriptar($idticket);
 				$hash = urlencode($idencriptado);
 				$respuesta = Datos::mensajeTicketModel($idticket, $idu, $text, $c);
-				 if($respuesta==1){
+				 if($respuesta==1){	
+					$mydatos = Datos::detalleSistema();
+					if($mydatos["nTickets"]==1){
+						$correo = $mydatos["eSistema"];
+						$notificacion = $this->emailalerta($correo, $modulo, $idticket);
+					}
 				 	echo '
 						<script type="text/javascript">
 						  window.setTimeout(function(){
@@ -822,6 +828,8 @@
 						    }, 0);
 						    </script>
 					 		';
+							
+					
 				 }
 				 else{
 				 	echo "error";
@@ -838,6 +846,7 @@
 			}
 
 			public function crearPagoController($idusuario, $referencia, $estadopago, $concepto, $importe, $imagen, $mensaje){
+				$mymodulo = "Pago Pendiente";
 				if($estadopago==3){
 					 $modulo = "pagos";
 				}
@@ -854,6 +863,13 @@
 					$idfactura =  Datos::ultimafactura();
 					$idencriptado = Datos::encriptar($idfactura);
 					$hash =urlencode($idencriptado);
+					$mydatos = Datos::detalleSistema();
+					if($mydatos["nPagos"]==1){
+						$correo = $mydatos["eSistema"];
+						$notificacion = $this->emailalerta($correo, $mymodulo, $idfactura);
+					}
+					
+					
 					echo '
 						<div class="alert alert-success">
 							Pago creado correctamente.
@@ -878,7 +894,62 @@
 
 		function saltoLinea($str) {
   			return str_replace(array("\r\n", "\r", "\n"), "<br />", $str);
-		}  
+		}
+		
+		
+		public function emailalerta($correo, $modulo, $idobjeto){
+			// Debes editar las próximas dos líneas de código de acuerdo con tus preferencias
+			$para = $correo;
+			$asunto = 'Notificación del sistema';
+			$cabecera  = 'MIME-Version: 1.0' . "\r\n";
+			$cabecera .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+			$cabecera .= 'From: InternetYA <contacto@internetya.com.mx>' . "\r\n";
+			$cabecera .= 'Bcc: <contacto@internetya.com.mx>' . "\r\n"; 
+
+			$email_message = '
+			
+			<!DOCTYPE html>
+			<html lang="es">
+			<head>
+				<meta charset="utf-8">
+				<meta http-equiv="X-UA-Compatible" content="IE=edge">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+				<link type="text/css" href="http://gubynetwork.com/docs/cclientes.css" rel="stylesheet"  >
+				<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+			</head>
+			<body><br/>
+			<div class="container">
+				<div class="mycont">
+				<div class="row">
+					<div class="col-md-12 pull-left">
+						<h2>Notificación de '.$modulo.'</h2>
+					</div>
+				</div>
+				
+				</div>
+				<hr>
+				
+				<p>Estimado Administrador se ha generado un '.$modulo.' con ID: <b>'.$idobjeto.'</b>, favor de revisarlo desde la consola de administración del sistema.
+				
+				</p>
+				<br><br>
+				<p>------------------------------<br/>
+				www.internetya.com.mx <br>
+				Benito Juarez 242 Col. Centro Zempoala,Veracruz.<br>
+				contacto@internetya.com.mx<br>
+				045 2961076448
+				</div>
+			</body>
+			</html>
+			'; 
+
+
+			
+			mail($para, $asunto, $email_message, $cabecera);	 
+
+		}
+
 }
 
  ?>

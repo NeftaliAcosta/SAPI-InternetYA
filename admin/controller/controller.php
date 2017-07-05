@@ -48,25 +48,18 @@
 			if(isset($_POST["usuarioIngreso"]) and isset($_POST["passwordIngreso"]) and $_POST["usuarioIngreso"] != "" and $_POST["passwordIngreso"] != ""   ){
 
 				$encriptar = Datos::encriptar($_POST["passwordIngreso"]);
-				$encriptar = Datos::encriptar($_POST["passwordIngreso"]);
-
 				$datosController = array( "usuario" => $_POST["usuarioIngreso"], 
 									      "password" => $encriptar);
-
 				$respuesta = Datos::ingresoAdminModel($datosController, "usuarios");
-
 				if($respuesta=="no"){
 				 echo "Datos incorrectos";
 				}
 				else{
-
 					session_start();
 					$_SESSION["validar"] = true;
 					$_SESSION["id"] = $respuesta["id"];
 					header("location:panel.php");
 				}
-
-
 			}
 
 		}
@@ -240,7 +233,7 @@
 				isset($_POST["telefonoCrear"]) and
 				isset($_POST["corteCrear"])
 				){
-
+					$normal=$_POST["passwordCrear"];
 					$encriptar = Datos::encriptar($_POST["passwordCrear"]);
 
 					$datosController = array( "usuario" => $_POST["usuarioCrear"], 
@@ -262,23 +255,12 @@
 				
 				if($respuesta==1){
 					//Eenvío de correo.
-					/*
-					$mail = new PHPMailer;
-					$mail->setFrom('nacosta@gubynetwork.com', 'Neftali Acosta');
-					$mail->addAddress('taitomore@gmail.com', 'TAito Acosta');     // Add a recipient
-					$mail->addAddress('ellen@example.com');               // Name is optional
-					$mail->addReplyTo('neftaliacosta@outlook.com', 'RE:');
-					$mail->addCC('cc@example.com');
-					$mail->addBCC('bcc@example.com');
-					$mail->Subject = 'Here is the subject';
-					$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-					$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-					if(!$mail->send()) {
-						echo 'Message could not be sent.';
-						echo 'Mailer Error: ' . $mail->ErrorInfo;
-					} else {
-						echo 'Message has been sent';
-					}*/
+					$config = Datos::sistemaModel();
+					if($config["nClientes"]==1){
+						$r = $this-> nclientemail($datosController, $normal); 
+					}
+					
+					
 					echo '<script type="text/javascript">window.setTimeout(function(){   
 			          	  window.location="panel.php?modulo=clientes"
 			        	}, 2000); 
@@ -329,8 +311,11 @@
 				<td>'.$item["FechaCorte"].'</td>
 				<td><a href="panel.php?modulo=clientes&action=ver&id='.$hash.'"><button type="button" class="btn btn-success">Ver/Editar</button></a></td>
 
-				<td><a href="panel.php?modulo=clientes&action=editar&id='.$hash.'
-				&delete=1"><button type="button" class="btn btn-danger	">Eliminar</button></a></td>
+				<!--<td><a href="panel.php?modulo=clientes&action=editar&id='.$hash.'
+				&delete=1"><button type="button" class="btn btn-danger	">Eliminar</button>--> </a></td>
+				 
+				
+				<td><a href="#"><button type="button" class="btn btn-danger	">Eliminar</button></a></td>
 			</tr>';
 
 			}
@@ -665,6 +650,7 @@
 
 
 				echo'<tr>
+					<td>'.$item["id"].'</td>
 					<td><b><a href="panel.php?modulo=clientes&action=ver&id='.$hashc.'">'.$item["usuario"].'</a></b></td>
 					<td>'.$item["Nombre"].'</td>
 					<td>'.$item["fecha"].'</td>
@@ -698,6 +684,7 @@
 					$class= "text-danger";
 				}	
 				echo'<tr>
+					<td>'.$item["id"].'</td>
 					<td><span title="'.$item["usuario"].'">'.$item["Nombre"].'</span></td>
 					<td>'.$item["fecha"].'</td>
 					<td>'.$item["Referencia"].'</td>
@@ -720,6 +707,7 @@
 			$hashc =urlencode($idencriptadoc);
 
 				echo'<tr>
+					<td>'.$item["id"].'</td>
 					<td><b><a href="panel.php?modulo=clientes&action=ver&id='.$hashc.'">'.$item["usuario"].'</a></b></td>
 					<td>'.$item["Nombre"].'</td>
 					<td>'.$item["fecha"].'</td>
@@ -741,6 +729,7 @@
 			$idencriptadoc = Datos::encriptar($item['idcliente']);
 			$hashc =urlencode($idencriptadoc);	
 				echo'<tr>
+					<td>'.$item["id"].'</td>
 					<td><b><a href="panel.php?modulo=clientes&action=ver&id='.$hashc.'">'.$item["usuario"].'</a></b></td>
 					<td>'.$item["Nombre"].'</td>
 					<td>'.$item["fecha"].'</td>
@@ -1240,6 +1229,65 @@
 		function saltoLinea($str) {
   			return str_replace(array("\r\n", "\r", "\n"), "<br />", $str);
 		}  
+		
+		
+		public function nclientemail($datos, $normal){
+			// Debes editar las próximas dos líneas de código de acuerdo con tus preferencias
+			$para = $datos["email"];
+			$asunto = "Datos de acceso InternetYA";
+			$cabecera  = 'MIME-Version: 1.0' . "\r\n";
+			$cabecera .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+			$cabecera .= 'From: InternetYA <contacto@internetya.com.mx>' . "\r\n";
+			$cabecera .= 'Bcc: <contacto@internetya.com.mx>' . "\r\n"; 
+
+			$email_message = '
+			
+			<!DOCTYPE html>
+			<html lang="es">
+			<head>
+				<meta charset="utf-8">
+				<meta http-equiv="X-UA-Compatible" content="IE=edge">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+				<link type="text/css" href="http://gubynetwork.com/docs/cclientes.css" rel="stylesheet"  >
+				<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+			</head>
+			<body><br/>
+			<div class="container">
+				<div class="mycont">
+				<div class="row">
+					<div class="col-md-12 pull-left">
+						<h2>Bienvenid@ a www.internetya.com.mx</h2>
+					</div>
+				</div>
+				
+				</div>
+				<hr>
+				
+				<p>Estimad@ '.$datos["nombre"] . ' '.$datos["apellido1"] .' gracias por formar parte del grupo selecto de clientes de <b>InternetYA!</b>, a continuación
+				le compartimos los datos de acceso a nuestro Sistema de Administración de Pagos en donde usted
+				podrá gestionar los pagos de sus servicios y crear peticiones de soporte a través del sistema de Tickets.
+				</p>
+				
+				<b>Usuario:</b> '.$datos["usuario"].' <br/>
+				<b>Contraseña: </b> '.$normal.'<br/>
+				<b>Acceso a Clientes: </b> https://internetya.com.mx/clientes/  <br>  <br>  <br>
+				Att: El equipo de Internet YA!
+				<p>------------------------------<br/>
+				www.internetya.com.mx <br>
+				Benito Juarez 242 Col. Centro Zempoala,Veracruz.<br>
+				contacto@internetya.com.mx<br>
+				045 2961076448
+				</div>
+			</body>
+			</html>
+			'; 
+
+
+			
+			mail($para, $asunto, $email_message, $cabecera);	 
+
+		}
 }
 
  ?>

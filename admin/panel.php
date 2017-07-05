@@ -147,12 +147,12 @@
 					$mvc -> pagina();
             	 ?>
             <!-- /.row -->
-
+			<br>
             <div class="container-fluid footer">
-			            <?php 
-                            $w = Datos::detalleSistema();
-                            echo '<p>'.$w["nSistema"].' Powered by: <span>Gubynetwork.com</span> © 2017</p>';
-                         ?>
+			<?php 
+                $w = Datos::detalleSistema();
+                echo '<p>'.$w["nSistema"].' Versión '.$w["vSistema"].' Powered by: <span>Gubynetwork.com</span> © 2017</p>';
+             ?>
 			</div>
         </div>
         <!-- /#page-wrapper -->

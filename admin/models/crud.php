@@ -365,11 +365,10 @@
 
 		public function pagosRecientesModel(){
 			$stmt = Conexion::conectar()->prepare("
-			select historialpagos.id, usuarios.usuario, usuarios.Nombre, historialpagos.fecha, historialpagos.comprobante, historialpagos.Referencia, estadopago.Estado, conceptos.NomConcepto, historialpagos.Importe, historialpagos.observaciones from historialpagos 
+			select historialpagos.id, usuarios.usuario, usuarios.Nombre, historialpagos.fecha, historialpagos.comprobante, historialpagos.Referencia, estadopago.Estado, historialpagos.concepto, historialpagos.Importe, historialpagos.observaciones from historialpagos 
 	inner join usuarios on historialpagos.id_usuario=usuarios.id 
 	inner join estadopago on historialpagos.EstadoPago=estadopago.id 
-	inner join conceptos on historialpagos.Concepto=conceptos.id 
-	order by historialpagos.id DESC LIMIT 5
+	order by historialpagos.id DESC LIMIT 7
 				");
 			$respuesta = $stmt->execute();
 			$respuesta = $stmt->fetchAll();

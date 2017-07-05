@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Internet YA!</title>
-    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
-    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+    <meta name="description" content="Construimos redes inalámbricas de alta capacidad y gran demanda.">
+    <meta name="keywords" content="Redes, proveedor de internet, redes inalámbricas.">
     
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300|Raleway:300,400,900,700italic,700,300,600">
     <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
@@ -47,7 +47,7 @@
                 <!--<li class=""><a href="#testimonial">Testimonios</a></li>-->
                 <!--<li class=""><a href="#galeria">Galeria</a></li>-->
                 <li class=""><a href="#contact">Contacto</a></li>
-                <li class=""><a href="clientes">Acceso a Clientes</a></li>
+                <li class=""><a href="https://internetya.com.mx/clientes/">Acceso a Clientes</a></li>
               </ul>
             </div>
           </div>
@@ -61,7 +61,7 @@
               <h2 class="bnr-sub-title">Nos hemos sumado a la revolución del internet</h2>
               <p class="bnr-para">Creemos que el acceso a internet es un derecho universal para el desarrollo de 
 			  cualquier persona, es por eso que en internet YA! buscamos acercar el servicio a poblaciones donde otras 
-			  compañías no quisieron..</p>
+			  compañías no quisieron.</p>
               <div class="overlay-detail">
                 <a href="#feature"><i class="fa fa-angle-down"></i></a>
               </div>
@@ -385,7 +385,8 @@
                 require_once "clientes/models/crud.php";
                 require_once "clientes/controller/controller.php";
                 $w = Datos::detalleSistema();
-                echo '<p>'.$w["nSistema"].' Powered by: <span>Gubynetwork.com</span> © 2017</p>';
+                $w = Datos::detalleSistema();
+                echo '<p>'.$w["nSistema"].' Versión '.$w["vSistema"].' Powered by: <span><a href="https://gubynetwork.com">Gubynetwork.com</a></span> © 2017</p>';
              ?>
         </div>
       </div>

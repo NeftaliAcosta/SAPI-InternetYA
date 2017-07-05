@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www.internetya.com.mx [NC]
+RewriteRule ^(.*)$ https://internetya.com.mx/$1 [L,R=301]
+
+RewriteEngine On 
+RewriteCond %{HTTP_HOST} ^internertya\.com.mx [NC]
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule ^(.*)$ https://www.internetya.com.mx/$1 [R,L]

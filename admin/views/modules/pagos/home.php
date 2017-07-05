@@ -10,6 +10,7 @@
                                  <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables"  >
                                     <thead>
                                         <tr>
+											<th>ID </th>
                                             <th>ID Cliente</th>
                                             <th>Nombre</th>
                                             <th>Fecha</th>

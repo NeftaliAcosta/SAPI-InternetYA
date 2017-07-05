@@ -112,7 +112,9 @@
                 <!-- /.col-lg-12 -->
             </div>
 
-            	<?php 
+            	<?php
+					/*error_reporting(E_ALL); 
+					ini_set('display_errors', 1);*/
 					require_once "models/enlaces.php";
 					require_once "models/crud.php";
 					require_once "controller/controller.php";

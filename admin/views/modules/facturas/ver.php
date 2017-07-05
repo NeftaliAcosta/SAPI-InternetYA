@@ -3,7 +3,7 @@
 		$a =Datos::validarPagoModel($_GET['id']);
 
 		$hash =urlencode($_GET['id']);
-		$idu = Datos::encriptar($a["id_usuario"]);
+		$idu = urlencode(Datos::encriptar($a["id_usuario"]));
 		if($a >0){
 			echo '
 			<div class="formatopago">

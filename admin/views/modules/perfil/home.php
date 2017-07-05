@@ -38,7 +38,7 @@
         $nTelefono = $_POST["telefonoActualizar"];
         $nCorte = $_POST["corteActualizar"];
 
-        $datos = ["id" => $id, "password" => $password, "nombre" => $nNombre, "apellido1" => $nApellido1, "apellido2" => $nApellido2, "email" => $nEmail, "direccion" => $nDireccion, "referencia" => $nReferencia, "localidad" => $nLocalidad, "telefono" => $nTelefono, "corte" => $nCorte ];
+        $datos = ["id" => $id, "password" => $password, "estado"=>$estado ,"nombre" => $nNombre, "apellido1" => $nApellido1, "apellido2" => $nApellido2, "email" => $nEmail, "direccion" => $nDireccion, "referencia" => $nReferencia, "localidad" => $nLocalidad, "telefono" => $nTelefono, "corte" => $nCorte ];
 
         $w = new MvcController();
         $w -> actualizarUsuarioController($datos);

@@ -50,7 +50,9 @@
                             <button type="submit"  name="login" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i>Entrar</button>                          
                         </div>
                     </div>
-                    <?php 
+                    <?php
+						/*error_reporting(E_ALL); 
+						ini_set('display_errors', 1);*/
                         require_once "models/crud.php";
                         require_once "controller/controller.php";
 
@@ -68,7 +70,13 @@
 
 
 <div class="container-fluid footer">
-	<p> Sistema de Gestión de Pagos Powered by: <span>yo.com</span> © 2017</p>
+	            <?php 
+                require_once "models/enlaces.php";
+                require_once "models/crud.php";
+                require_once "controller/controller.php";
+                $w = Datos::detalleSistema();
+				echo '<p>'.$w["nSistema"].' Versión '.$w["vSistema"].' Powered by: <span>Gubynetwork.com</span> © 2017</p>';
+             ?>
 </div>
 </body>
 
