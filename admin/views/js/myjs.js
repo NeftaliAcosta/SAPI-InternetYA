@@ -138,10 +138,7 @@ $.fn.pageMe = function(opts){
 
 
 $(document).ready(function(){
-
     tinymce.init({ selector:'textarea' });
-
-
     var txt = $('.dataTables_filter').find('label');
         txt.each(function () {
         $(this).html("Buscar");
@@ -170,7 +167,11 @@ $(document).ready(function(){
 
 
 
+    $('.btneliminar').click(function() {
+        var id = $(this).attr("id");
+        $('#btncontinuar').attr("href", "panel.php?modulo=clientes&action=editar&id="+id+"&var=2");
 
+    });
 
   $('.btnpago').click(function() {
       var imagen = $(this).attr("id");

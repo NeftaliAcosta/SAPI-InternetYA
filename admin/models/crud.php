@@ -584,7 +584,22 @@
 			return $myidfactura;
 		}
 
+		
+
 		public function eliminarUsuarioModel($idUsuario){
+			//Eliminar Las fotos de los pagos
+			$stmt=Conexion::conectar()->prepare("SELECT id, comprobante FROM historialpagos WHERE id_usuario=:id");
+			$stmt->bindParam(":id", $idUsuario, PDO::PARAM_INT);
+			if($stmt->execute()){
+				$respuesta = $stmt->fetchAll();
+				$final = count($respuesta);
+				for($i=0; $i<$final; $i++){
+					$foto = $respuesta[$i]["comprobante"];
+					$ruta = "..\imagenes/$foto";
+					unlink($ruta); 
+				}
+
+			$contador = 4;
 			$stmt= Conexion::conectar()->prepare("delete from detalletickets where idusuario=:id");
 			$stmt->bindParam(":id", $idUsuario, PDO::PARAM_INT);
 			if($stmt->execute()){
@@ -610,9 +625,18 @@
 				$contador = $contador + 1;
 
 			}
-
+			
+			
+			
 			return $contador;
+ 
+			}
+
+
+			
+			
 		}
+
 
 		public function sistemaModel(){
 			$stmt=Conexion::conectar()->prepare("select * from sistema where id=1");

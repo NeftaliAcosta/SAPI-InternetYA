@@ -12,6 +12,11 @@
         	}, 1000);
         	</script>';
 		}
+		if($var==2){
+			$idusuario= urldecode($idusuario);
+			$eliminar = new MvcController();
+			$eliminar -> eliminarUsuarioController($idusuario);
+		}
 		else{
 		echo  '
 			<div class="alert alert-danger">

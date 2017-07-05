@@ -205,6 +205,32 @@
     </div>
     <!-- fin Modal-->
 
+
+        <!-- Modal -->
+    <div id="notificacion" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">¡Alerta del sistema!</h4>
+          </div>
+          <div class="modal-body">
+             Está a punto de eliminar información del sistema que no será posible recuperar. ¿Está seguro de realizar esta acción?.
+          </div>
+          <div class="modal-footer">
+            <a  href="" id="btncontinuar" class="btn btn-danger">Continuar</a>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- fin Modal-->
+
+
+
 </body>
 
 </html>

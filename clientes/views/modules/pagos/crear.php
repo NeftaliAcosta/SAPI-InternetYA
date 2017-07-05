@@ -1,6 +1,7 @@
  <?php 
 
- $idusuario = $_SESSION["id"]; 
+ $idusuario = $_SESSION["id"];
+    $myusuario = Datos::obtenerUsuarioModel($idusuario);
 	if( isset($_POST["referenciaPago"])  && isset($_POST["conceptoPago"]) && isset($_POST["importePago"]) &&  isset($_POST["mensajePago"])){
 		
 		if (( ($_FILES["archivo-a-subir"]["type"] == "image/gif")
@@ -10,8 +11,8 @@
 			  && ($_FILES["archivo-a-subir"]["size"] < 9250000000))
 			{
 				$target_path = "../imagenes/";
-				$strimg =basename( $_FILES['archivo-a-subir']['name']); 
-				$target_path = $target_path . basename( $_FILES['archivo-a-subir']['name']); 
+				$strimg ="id".$idusuario."usr".  $myusuario["usuario"]."name".basename( $_FILES['archivo-a-subir']['name']); 
+				$target_path = $target_path. $strimg;
 				if(move_uploaded_file($_FILES['archivo-a-subir']['tmp_name'], $target_path)) 
 				{
                     $epago=3;

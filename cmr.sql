@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.6.6
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 21-06-2017 a las 00:20:54
--- Versión del servidor: 10.1.21-MariaDB
+-- Servidor: localhost:3306
+-- Tiempo de generación: 05-07-2017 a las 11:48:31
+-- Versión del servidor: 5.6.35-cll-lve
 -- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `cmr`
+-- Base de datos: `ndsoluci_siscris`
 --
 
 -- --------------------------------------------------------
@@ -84,18 +84,6 @@ CREATE TABLE `detalletickets` (
   `clase` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Contiene todos los mensajes o conversacion de un ticket';
 
---
--- Volcado de datos para la tabla `detalletickets`
---
-
-INSERT INTO `detalletickets` (`id`, `idticket`, `idusuario`, `texto`, `fecha`, `clase`) VALUES
-(101, 32, 79, '<p>&iquest;Hola?</p>', '2017-06-16 11:29:30', 0),
-(102, 32, 79, '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim nisi vel orci vulputate, at consequat nisi suscipit. Duis feugiat nulla nec erat ultrices sollicitudin. Maecenas vehicula volutpat orci eget ornare. Nullam id lorem eget dolor dictum ultricies et id lectus. Vestibulum vel augue sed magna aliquam suscipit in fringilla orci. Suspendisse potenti. Donec vel nisl ultrices, porttitor sem sit amet, pretium nisi. Nullam molestie dapibus lorem, vulputate consectetur libero posuere eu.</span></p>', '2017-06-16 11:33:22', 0),
-(103, 33, 76, '<p>asdasd</p>', '2017-06-20 16:43:17', 0),
-(104, 34, 76, '<p>asdas</p>', '2017-06-20 16:43:43', 0),
-(105, 35, 76, '<p>asdas</p>', '2017-06-20 16:45:48', 0),
-(106, 36, 76, '<p>asdas</p>', '2017-06-20 16:47:48', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -141,19 +129,19 @@ CREATE TABLE `historialpagos` (
 --
 
 INSERT INTO `historialpagos` (`id`, `id_usuario`, `fecha`, `comprobante`, `Referencia`, `EstadoPago`, `Concepto`, `Importe`, `observaciones`, `tipo`) VALUES
-(60, 76, '2017-06-14', '6d8363fc-1676-4d74-b3f2-36ca9cb133bb.jpg', 'OXXO:01231', 4, '7', '250', '<p>TESTING</p>', NULL),
-(61, 76, '2017-06-14', '1497456020659441695654.jpg', '1277', 5, '4', '456', '<p><em>test</em></p>', NULL),
-(62, 76, '2017-06-14', '14974622796531432652172.jpg', 'Oxxo: 1771', 4, '1', '450', '<p>Kajana</p>', NULL),
-(63, 77, '2017-06-14', '1497471544496-439130701.jpg', 'Oxxo', 5, '1', '1500', '<p>Hola mundo</p>', NULL),
-(64, 76, '2017-06-14', '14974841839081243480628.jpg', 'Oxxo:1765', 5, '8', '350', '<p>Todo bien</p>', NULL),
-(65, 80, '2017-06-19', 'mini sectorial.png', '123456', 4, '1', '250', '<p>PO</p>', NULL),
-(66, 80, '2017-06-19', 'up ds.png', '123456', 3, '10', '300', '<p>pago pendiernte&nbsp;</p>', NULL),
-(67, 76, '2017-06-20', 'default.png', 'TEST', 3, '6', '250', '<p>tes de pago sin foto cargada al sistema.</p>', NULL),
-(69, 79, '2017-06-20', 'default.png', 'OXXO:2330', 4, 'Junio 2017', '300', '<p>TEST</p>', NULL),
-(70, 79, '2017-06-20', 'default.png', 'test', 5, 'Junio 2017', '300', '<p>test pago pendiente</p>', NULL),
-(71, 76, '2017-06-20', 'ticketpago.jpg', 'OXXO:1234', 3, 'Setiembre 2017', '270', '<p>Prueba</p>', NULL),
-(72, 76, '2017-06-20', 'ticketpago.jpg', '2334', 3, 'Junio 2017', '300', '<p>asdasdsa</p>', NULL),
-(73, 76, '2017-06-20', 'ticketpago.jpg', '666', 4, 'Junio 2017', '400', '<p>test</p>', NULL);
+(75, 109, '2017-07-02', '1499044385720-2130176286.jpg', '3536', 5, 'Julio 2017', '300', '<p>Feygt</p>', NULL),
+(76, 161, '2017-07-03', 'img001.jpg', '123456', 5, 'Julio 2017', '300', '<p>cristhian djjdjfhdhfdfh</p>', NULL),
+(77, 138, '2017-07-04', '1499190738023-2130176286.jpg', '9209243', 4, 'Julio 2017', '300', '<p>Hola</p>', NULL),
+(78, 143, '2017-07-04', '14991912478231111711134.jpg', 'oo4177', 4, 'Agosto 2017', '300', '', NULL),
+(79, 128, '2017-07-04', '1499198664074.jpg', '1234', 5, 'Julio 2017', '300', '<p>Jhzjz</p>', NULL),
+(80, 137, '2017-07-04', '1499199666130-834189079.jpg', '1234', 5, 'Julio 2017', '300', '<p>Ff</p>', NULL),
+(81, 133, '2017-07-04', '14992006724161643884971.jpg', '124', 5, 'Julio 2017', '300', '<p>Trrfrd</p>', NULL),
+(82, 154, '2017-07-04', '1499207157722936657963.jpg', '004179', 4, 'Julio 2017', '300', '', NULL),
+(83, 159, '2017-07-04', 'image.jpg', '1234', 5, 'Julio 2017', '300', '<p>Vhuthh</p>', NULL),
+(84, 168, '2017-07-04', '1499212415055-1456748066.jpg', '1235', 5, 'Agosto 2017', '400', '<p>Efffgcv</p>', NULL),
+(85, 169, '2017-07-04', '14992148700931567524255.jpg', '1234', 5, 'Julio 2017', '300', '<p>Gdhvgnchh</p>', NULL),
+(86, 170, '2017-07-04', '1499215879713820620388.jpg', '1234', 5, 'Julio 2017', '300', '<p style=\"padding-left: 30px;\">Gsjskdjd</p>', NULL),
+(87, 150, '2017-07-04', 'FB_IMG_1499022271634.jpg', '1234', 5, 'Julio 2017', '300', '<p>Fdhdhfhh</p>', NULL);
 
 -- --------------------------------------------------------
 
@@ -172,23 +160,36 @@ CREATE TABLE `localidades` (
 --
 
 INSERT INTO `localidades` (`id`, `NomLocalidad`, `Observacion`) VALUES
-(2, 'Villa Ursulo Galván', 'Cabecera Municipal'),
-(3, 'El bobo', 'Municipio de úrsulo galván'),
-(4, 'Barra de chachalacas', 'Minicipio de úsulo galván'),
-(5, 'Real del oro', 'Municipio de úsulo galván'),
-(6, 'José Cardel', 'José cardel'),
-(7, 'Boca del rio', 'no se'),
-(8, 'Zempoala', 'Municipio de Úrsulo galván'),
-(9, 'El zapotito', 'Mubicipio de Ursulo galván'),
-(10, 'Paso de doña Juana', 'Municipio de Ursulo Galván'),
-(18, 'Tinajitas', 'Rumbo a laguna verde'),
-(19, 'Tinajitas', 'Rumbo a laguna verde'),
-(20, 'El tejar', ''),
-(21, 'Mozomboa', ''),
-(26, 'Cempoala', ''),
-(27, 'la barra', ''),
-(28, 'Cardel 2', ''),
-(31, 'Villa Rica', '');
+(26, 'Zempoala', ''),
+(32, 'San Pancho', ''),
+(33, 'Tamarindo', 'A lado del Mango'),
+(34, 'Crucero', ''),
+(35, 'Arroyo Seco', ''),
+(36, 'Colonia Madero', ''),
+(37, 'El Cedro', ''),
+(38, 'La Gloria', ''),
+(39, 'Lechuguillas', ''),
+(40, 'Paso de Varas 1', ''),
+(41, 'Rancho Alegre', ''),
+(42, 'Rancho Balderas', ''),
+(43, 'Real del Oro', ''),
+(44, 'San Isidro', ''),
+(45, 'San Jose Chipila', ''),
+(46, 'Tabachines', ''),
+(47, 'Zapotito', ''),
+(48, 'La Antigua', ''),
+(49, 'Salmoral', ''),
+(50, 'Buena Vista', ''),
+(51, 'Carretas', ''),
+(52, 'El Mango', ''),
+(53, 'El Juile', ''),
+(54, 'El Gallito', ''),
+(55, 'El Faizan', ''),
+(56, 'La Ceiba', ''),
+(57, 'Hatillo', ''),
+(58, 'Pureza', ''),
+(59, 'Loma Iguana', ''),
+(60, 'La Vibora', '');
 
 -- --------------------------------------------------------
 
@@ -206,7 +207,7 @@ CREATE TABLE `sistema` (
   `nSistema` text,
   `txtAviso` text,
   `txtBancarios` text,
-  `vSistema` varchar(10) DEFAULT NULL
+  `vSistema` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Almacena información general del sistema';
 
 --
@@ -214,7 +215,7 @@ CREATE TABLE `sistema` (
 --
 
 INSERT INTO `sistema` (`id`, `nTickets`, `nPagos`, `nClientes`, `nAviso`, `eSistema`, `nSistema`, `txtAviso`, `txtBancarios`, `vSistema`) VALUES
-(1, 1, 1, 1, 1, 'test@hotmail.com', 'Internet YA! S.A. de C.V.', '<p><strong>ATENTO AVISO</strong></p>\r\n<p>A todos nuestros nuestros clientes se les informa que hemos agregado un nuevo m&eacute;todo de pago de bancomer que se ver&aacute; reflejado al momento de enviar un pago, si tiene alguna duda con los detalles no dude en contactarnos.</p>', '<p><strong>BANAMEX:</strong></p>\r\n<p>Cuenta: 923821712981312</p>\r\n<p><strong>Bancomer</strong>:</p>\r\n<p>Cuenta:2423423432</p>\r\n<p><strong><em>Por favor utilice su n&uacute;mero de cliente como referencia.</em></strong></p>\r\n<p>&nbsp;</p>', '3.1');
+(1, 1, 1, 1, 0, 'cristhianricardo@gmail.com', 'Internet YA! S.A. de C.V.', '<p><strong>ATENTO AVISO</strong></p>\r\n<p>No olvides incluir la foto de tu pago.!</p>\r\n<p>Gracias</p>', '<p><strong>SANTANDER:</strong></p>\r\n<p><strong>OXXO</strong></p>\r\n<p># DE TARJETA: 5579 0783 0225 3170</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>', '3.1.2 Última revisión: 05/07/2017');
 
 -- --------------------------------------------------------
 
@@ -231,17 +232,6 @@ CREATE TABLE `tickets` (
   `estado` int(2) NOT NULL DEFAULT '0',
   `mensaje` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Aquí se almacenan los tickets de soporte';
-
---
--- Volcado de datos para la tabla `tickets`
---
-
-INSERT INTO `tickets` (`id`, `idusuario`, `asunto`, `prioridad`, `fecha`, `estado`, `mensaje`) VALUES
-(32, 79, 'Test', 3, '2017-06-16', 0, ''),
-(33, 76, 'test', 3, '2017-06-20', 0, ''),
-(34, 76, 'asdsa', 2, '2017-06-20', 0, ''),
-(35, 76, 'asdas', 1, '2017-06-20', 0, ''),
-(36, 76, 'asdas', 3, '2017-06-20', 0, '');
 
 -- --------------------------------------------------------
 
@@ -271,12 +261,81 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID`, `usuario`, `password`, `Nombre`, `Apellido1`, `Apellido2`, `Direccion`, `Referencia`, `Privilegio`, `Estatus`, `Telefono`, `Correo`, `Localidad`, `FechaCorte`) VALUES
-(38, 'admin', 'jSpipEaucA661NKNT0I5u5rG37OF5gaD8LUCgZ2sujk=', 'Neftali', 'Acosta', 'Acosta', 'Maria enriqueta camarillo #263 Frac. Villa Rica', 'Frente a la barda al final del fraccionamiento.', 0, 1, '1006049', 'neftaliacosta@outlook.com', 7, 1),
-(76, '001', 'cc/VH1cGtK5jDQa3rlALLUPE85rLjoGpGeXQyHPJRZA=', 'Irma', 'Alvarez', '', 'demo', 'NInguna', 1, 1, '2291669974', 'irma@hotadasds.com', 10, 2),
-(77, '002', 'exJUOrdb/iwAt+N8fbUb36GDJpl4yM0K+Z9TJX4BT00=', 'Misael', 'Herrera', 'Reyes', 'Veracruz', 'Ninguna', 1, 1, '1213423421321', 'misa@hotmail.com', 8, 2),
-(78, 'cris', '1GwTPyMmuFRI8uYVLhvidFh7laj11pwIG9s0ZgJOfr8=', 'Cristhian Ricardo', 'Vicente', '', 'Zempoala', 'Ninguna', 0, 1, '123456789', 'cris@hotmail.com', 8, 2),
-(79, '003', 'GXlFdZD4uzDFrepJ6JUbY4h2HwxlFr8d9pJYMtVAUGU=', 'Hannia', 'Guzmán', 'Acosta', 'Testing', 'ninguna', 1, 1, '2291391667', 'hania@hotmail.com', 2, 3),
-(80, '029', '7mNctz6YMGfXCeh3537cnjNrF9+06kmbFj6MT/xZNSY=', 'Cristhian', 'Ruiz', 'Vicente', 'La Posta', 'Casa Azul', 1, 1, '2961076448', 'cristhian_r120@yahoo.com.mx', 19, 1);
+(38, 'admin', 'jSpipEaucA661NKNT0I5u5rG37OF5gaD8LUCgZ2sujk=', 'Neftali', 'Acosta', 'Acosta', 'Maria enriqueta camarillo #263 Frac. Villa Rica', 'Frente a la barda al final del fraccionamiento.', 0, 1, '2291391667', 'neftaliacosta@outlook.com', 26, 1),
+(97, 'administrador', 'yLJb6LjMDMl+dUE3FdQQ8yQ7cgYmMBRV+cIUCI/GqEY=', 'Cristhian Ricardo', 'Ruiz', 'Vicente', 'Zempoala', 'Ninguna', 0, 1, '2961076448', 'cristhianricardo@gmail.com', 26, 3),
+(98, '100', '/xZldYAWy9ut0YR3KT4WQQmqCZfZh1gpQax7JdRMG/k=', 'Rafael', 'xdfdfddfdfdfgd', 'dfdfdf', 'jbjhjhjhj', 'dfdfdf', 1, 1, '2961076448', 'jdfjdfkjdfdf@kkddf.com', 26, 2),
+(99, '048', 'kDHv5syO1buBH5tmMrgZedRpAXZp7byFJdBUkdmpHBw=', 'Reyna del Carmen', 'Lara', 'Aguirre', 'Conocido San Pancho', 'Casa Amarilla Orilla de Carretera Maestra', 1, 1, '2961076448', 'shdjdhfjd@hotmail.com', 32, 2),
+(100, '172', 'HtxgtYWgBHn7gimvnnLtqQTZZKidFNE+aXXLKjBW6lw=', 'Maricruz', 'Rosas', 'Olvera', 'Conocido', 'Esq Tamarindo 2 Pisos Naranja', 1, 1, '2961076448', 'pendiente@hotmail.com', 33, 2),
+(101, '056', 'ZZB+A7Qp2ml9X8NZulm6njTIz+IAyA7/uqu6nJT5mOI=', 'Elias', 'Muñoz', 'Trujillo', 'Conocido', 'Taxista Tamarindo', 1, 1, '2961076446', 'pendiente@hotmail.com', 33, 1),
+(102, '055', 'EKp3PSnK6s1+3fxdOwYYqIXIWzZ932uXgXiD5AKBUcU=', 'Isabel', 'Rosas', 'Castro', 'Conocido', 'Tamarindo', 1, 1, '2961029651', 'pendiente@hotmail.com', 33, 2),
+(103, '165', '/1VQ0Pj9+kOOpR7Zpwmqh6oe1Y6ss/1xWWd8yDIZxeM=', 'Adriana', 'Fuentes', 'Montero', 'Conocido', 'Vecina de moises', 1, 1, '2299360806', 'pendiente@hotmail.com', 34, 1),
+(104, '164', 'E4Q5bo+2LSNvGhnapucvFWvL7ZkWXyFFu418wXSfc1E=', 'Moises', 'Caiseros', 'Barragan', 'Conocido', 'Taxista', 1, 1, '2961011265', 'pendiente@hotmail.com', 34, 1),
+(105, '169', 'O4V4LjsprKTlSP9DY4CsiU0Qfnk8sFC6YDJHrvqArWk=', 'Dulce', 'Contreras', 'Lopezp', 'Conocido', 'Vecina moises', 1, 1, '2961087311', 'Pendiente@hotmail.com', 34, 2),
+(106, '173', 'p2CH3KypiY/KLKM+ZrNsXuj8urjDC+4NNQ18I4FIyDs=', 'Jesus', 'Melchor', 'Cañete', 'conocido', 'Ultima crucero', 1, 1, '2965933635', 'pendiente@hotmail.com', 34, 2),
+(107, '170', 'vb6oWVr8Vs+h7rsCUyqVngR9/sMmJHHO8de/r/EC75c=', 'Daniel', 'hdfhdfh', 'sjdbsdhsjdpensdjd', 'dfjdjdfjdfjdfjdf', 'dfdf', 1, 1, '2961076448', 'kfkjdkfd@hdkflkdf.vcom', 34, 2),
+(108, '001', 'OTrl02Kk0q4pPHWGqHLMLb6Hm1bBWX5+1huLimTnolI=', 'Miguel', 'Desconocido', 'Desconocido', 'Conocido', 'Ultima casa fondo del cañal', 1, 1, '2961076448', 'Desconocido@Desconocido.com', 35, 2),
+(109, '006', 'bHYN5ja1ZYdPrQ7I2BFTIEDHXt5UVxHVO3at/leeDSo=', 'Cesar', 'Desconocido', 'Desconocido', 'Conocido', 'Maestro Mucho arbol al fondo', 1, 1, '2961076448', 'Desconocido@Desconocido.com', 37, 2),
+(110, '007', '4Bo8lEq3P6UUspBU42ZO9NKMqzQsBqzjIzvQHW/YCBk=', 'Monica', 'Desconocido', 'Desconocido', 'Conocido', 'A lado de Maestro Cesar', 1, 1, '29610764448', 'desconocido@desconocido.com', 37, 2),
+(111, '013', 'PcsmgZ/jS8m9SC8DrD97cekUOpWaOpVxcIdNYRmiOHs=', 'Guadalupe', 'desconocido', 'desconocido', 'Conocido', 'Lechuguilla Rancho Juan Cruz', 1, 1, '2961076448', 'desconocido@desconocido.com', 39, 1),
+(112, '014', 'e9AIbsSHjdcbbUK6BC3vg6ReAX4zTIx5Z/zpHX2voNM=', 'Bernado', 'desconocido', 'desconocido', 'Conocido', 'Ultima casa rancho juan cruz hasta el fondo', 1, 1, '2961076448', 'desconocido@desconocido.com', 39, 1),
+(113, '016', 'hmmhrZ2aHyEQCwGdrN/KlrqP22nq+1SQN7k+mcuJonY=', 'Alicia', 'desconocido', 'desconocido', 'Conocido', 'Unico Cyber de Paso de Varas', 1, 1, '2961076448', 'desconocido@desconocido.com', 40, 1),
+(114, '017', 'To10OXmnuYu+f6/uWAtQOsJ5GivJDgtvk/kIFbIk4sg=', 'Carlos', 'desconocido', 'desconocido', 'Conocido', 'Ultima calle a la derecha paso de varas', 1, 1, '29610764448', 'desconocido@desconocido.com', 40, 1),
+(115, '018', 'owCzCXfEFUuG2YKW1XIdNGvlMpoJjfPMLKnUT7CUr+c=', 'Yadira', 'desconocido', 'desconocido', 'Conocido', 'Casa Anaranjada Vecina Isabel', 1, 1, '2961076448', 'desconocido@desconocido', 40, 1),
+(116, '019', '2bVORJGomr5t8ly9aryaiAQgL3K8Qxce6eJYulNfj7U=', 'Rosa', 'desconocido', 'desconocido', 'Conocido', 'Vecina Alicia Cyber', 1, 1, '2961076448', 'desconocido@desconocido.com', 40, 2),
+(117, '020', 'oiVLjV/8pPM3EDsihLHYkm0NF7uliEYvzoC2ygvq/fI=', 'Isabel', 'desconocido', 'desconocido', 'Conocido', 'Vecina Yadira Casa Blanca A lado del via', 1, 1, '2961076448', 'desconocido@desconocido.com', 40, 1),
+(118, '026', 'OOLMLDWZdEZA8YA/VOLTqXpMGpTPjvGeGnLs7ehcOa0=', 'Naty', 'desconocido', 'desconocido', 'Conocido', 'Casa 2 pisos Maestra Primera Calle', 1, 1, '2961076448', 'desconocido@desconocido.com', 44, 1),
+(119, '027', 'jOAqq9WogFBjErSSmeayxKZZPQEZ1RPdCVmwjs3or+0=', 'Cyber Nicaim', 'desconocido', 'desconocido', 'Conocido', 'Cyber San Isidro Salon Social', 1, 1, '2961076448', 'desconocido@desconocido.com', 44, 1),
+(120, '032', 'jU/W4KXRrqRDJqXV0ogSnZU1wNWH6QdUS/2lvPoULp4=', 'Marisela', 'desconocido', 'desconocido', 'Conocido', 'Tabachines 2 pisos Antena de Parilla', 1, 1, '2961076448', 'desconocido@desconocido.com', 26, 1),
+(121, '040', 'T6HOSeCKA/ooDb4LO8zv31EWwqpeQunKimJ4shmGmTI=', 'Nadia', 'desconocido', 'desconocido', 'Conocido', 'Casa 2 Pisos Col. Paraiso', 1, 1, '2961076448', 'desconocido@desconocido.com', 26, 1),
+(122, '166', '7jnYX9IlmdAwMdbgrX8j2QOAPiKWkPvNqdiDmyAC7KU=', 'Eloina', 'desconocido', 'desconocido', 'conocido', 'Crucero Frente al Parque', 1, 1, '2961076448', 'desconocido@desconocido.com', 34, 1),
+(123, '043', 'pVemzVAc3ceYP5krFl6RLPaYknDzLP5voRbsnCY0IYw=', 'Griselda', 'desconocido', 'desconocido', 'Conocido', 'Col. Paraiso Tiendita', 1, 1, '2961076448', 'desconocido@desconocido.com', 26, 1),
+(124, '044', 'r+FKVhmfrN5iAetM23lIIF1B1Ca+cDgEoMjFpxoyQo4=', 'Juani', 'desconocido', 'desconocido', 'Conocido', 'Paraiso Casa Amarilla', 1, 1, '2961076448', 'desconocido@desconocido.com', 26, 1),
+(125, '049', 'hGLAQcK/2kcfXV7LCZFwEnc1fKC5f05oo/q3dnEEHJU=', 'Blanca', 'desconocido', 'desconocido', 'Conocido', 'Caseta Primer Cliente', 1, 1, '2961076448', 'desconocido@desconocido.com', 48, 1),
+(126, '050', 'kxBWP/QzYYHZkbQRSN+xDpXw8yCMYJDj+D8nmZXUc2w=', 'saturnina', 'desconocido', 'desconocido', 'Conocido', 'Restaurante Cortez Caseta', 1, 1, '2961076448', 'desconocido@desconocido.com', 48, 1),
+(127, '138', 'hoBn1VX5MPceIZs98k0YIOPZoFUBZEs1HNWjqRwNtzI=', 'Fidel', 'Vazquez', 'Irala', 'Conocido', 'Primo Ruben Cableado', 1, 1, '2961076448', 'desconocido@desconocido.com', 58, 2),
+(128, '057', 'kHxqyX/dJ4/lluWjVAAXl0/BUUVABdkE0jitG5u+Tzw=', 'Alica', 'desconocido', 'desconocido', 'Conocido', 'Buena Vista Frente a Tienda', 1, 1, '2961076448', 'desconocido@desconocido.com', 50, 1),
+(129, '058', 'NRJe8IUolUCE+GdLa48N5nLcUJOF6Q6MTYnqV/hssq4=', 'Florinda', 'desconocido', 'desconocido', 'Conocido', 'Tienda Buena Vista', 1, 1, '2961076448', 'desconocido@desconocido.com', 50, 1),
+(130, '059', 'YTbuoaWxVx4JWzOk5hqneIJMO8kL0hVhCcrlEM2oSwI=', 'Britzela', 'desconocido', 'desconocido', 'Conocido', 'Carretas Casa Amarilla Tubo se Doblo', 1, 1, '2961076448', 'desconocido@desconocido.com', 51, 1),
+(131, '060', 'EKj5avWDMeOETgDs8v0x4s/6jZ48mXVh71bcJFbTXwg=', 'Claudia', 'desconocido', 'desconocido', 'Conocido', 'Ultima calle de Carretas', 1, 1, '29610764448', 'desconocido@desconocido.com', 51, 1),
+(132, '061', 'hZn7JzHCKvgCTtZuaL5FLehyEe1q6P5O++R2dlLJ0m0=', 'Esperanza', 'desconocido', 'desconocido', 'conocido', 'ultima Casa Carretas', 1, 1, '2961076448', 'desconocido@desconocido.com', 51, 2),
+(133, '062', 'LunYfeX79VmAySxNPffiMIMnVJnnaEwnbmf7gw4VKU0=', 'Guadalupe', 'desconocido', 'desconocido', 'Conocido', 'Patio Enfrente Cambio antena quemada', 1, 1, '2961076448', 'desconocido@desconocido.com', 51, 1),
+(134, '063', 'J7pIU+35yCml8RHedR9ClUrkzBgkCdiLT9xvsuiFL+w=', 'Liliana', 'desconocido', 'desconocido', 'conocido', 'Casa Rosada Entrada', 1, 1, '2961076448', 'desconocido@desconocido.com', 51, 1),
+(135, '064', 'XyV4QN66SrLTG8lvj11Ygdc3akKF7NHBrQFMpg/lXLY=', 'Angela', 'desconocido', 'desconocido', 'conocido', 'Pendiente', 1, 1, '2961076448', 'desconocido@desconocido.com', 51, 1),
+(136, '065', 'zyRQnOXBMF/c4bL+OhWQjyV9jRxfMNEyLtSuTfQn/5k=', 'Lizeth', 'Morales', 'desconocido', 'Conocido', 'Loma de los Morales', 1, 1, '2961076448', 'desconocido@desconocido.com', 52, 1),
+(137, '066', 'ndxsklU9Bcu8CRqz/a0gD9XGmby6U181d3YvgL/3IWc=', 'Leticia', 'desconocido', 'desconocido', 'Conocido', 'Tiene antena de platillo', 1, 1, '2961076448', 'desconocido@desconocido.com', 51, 1),
+(138, '067', 'nX9SU3eElmLDN4xrSRo+HoSjm37ndtVLPmsSeT+9ljs=', 'Miguel', 'desconocido', 'desconocido', 'Conocido', 'Tiendita', 1, 1, '2961076448', 'desconocido@desdjsd.com', 52, 1),
+(139, '051', 'sUB1jJHa7C+234gnUrBwSB5P+1xmdCuHtpmbgvEU9+s=', 'Saradelia', 'desconocido', 'desconocido', 'la antigua', 'pendiente', 1, 1, '2961071901', 'sara@hotmail.com', 48, 1),
+(140, '052', 'hYwcdNpE2Qrz3b7O6R/el/aaHDw7aMwjOSspgc7veBE=', 'victoria', 'desconocido', 'desconocido', 'la antigua', 'desconocido', 1, 1, '2961076448', 'victoria@hotmail.com', 48, 1),
+(141, '053', '8UVu/lvaT8y4YDsui0wKAaYyPwFJKmk/X7oYlG+2D/I=', 'Pacheco', 'desconocido', 'desconocido', 'Salmoral', 'desconocido', 1, 1, '2961076448', 'pacheco@hotmai.com', 49, 1),
+(142, '054', 'JZ8rIOBtT297Qh9ERQnyioDvjXr8GKQEmmRkDSHMX54=', 'Javier Arrieta', 'desconocido', 'descocido', 'Salmoral', 'desconocida', 1, 1, '2961076448', 'javier@hotmail.com', 49, 1),
+(143, '068', '+RH3n0b8IwaJA4NFb83xfv81WiQxRzTRHWrEMwT5wZM=', 'Vicente', 'desconocido', 'desconocido', 'El Mango', 'desconocido', 1, 1, '2961076448', 'taller@hotmail.com', 52, 1),
+(144, '069', 'UpLZEjKjsR4YQjanldImbk8fWTDdYM1D8QjOzl/qb8w=', 'Rosalba', 'desconocido', 'desconocido', 'El Mango', 'desconocido', 1, 1, '2961076448', 'rosalba@hotmail.com', 52, 1),
+(145, '070', 'yFSSl1jTMVEe+92iUUiuYseFZRhmZxLQDJHJAj3G/WA=', 'Iliana', 'desconocido', 'desconocido', 'El Mango', 'desconocdo', 1, 1, '2961076448', 'iliana@hotmail.com', 52, 1),
+(146, '071', 'KPjgT0NmtO8mFXyDuGOZ/n8hLGT4yyldsReRHARGvrM=', 'Angel', 'desconocido', 'desconocido', 'El Mango', 'desconocido', 1, 1, '2961076448', 'angel@hotmail.com', 52, 1),
+(147, '0072', 'yF17v1rfg3pe1YVXGl5MCDd308ltzKN8OWkCZsmehSg=', 'primaria', 'desconocido', 'desconocido', 'El Mango', 'desconocido', 1, 1, '2961076448', 'primaria@hotmail.com', 52, 1),
+(148, '073', '5+V46nV7zsBsIc3PHM1qonUnP5vdJvrlgFPet5ogV2E=', 'Limberth', 'desconocido', 'desconocido', 'El Mango', 'desconocido', 1, 1, '2961076448', 'limberth@hotmail.com', 52, 1),
+(149, '075', 'Nb5gmZX3zEFQkXIGF2DZmSIkhdY9tP4bcE6ka4s+xHs=', 'Rafael', 'desconocido', 'desconocido', 'El Mango', 'desconocido', 1, 1, '2961076448', 'rafael@hotmail.com', 52, 1),
+(150, '076', 'T0FWBl46T6FJee87adTMsTh4AFs8izcPkxodipat4kU=', 'Cristian', 'desconocido', 'desconocido', 'El Mango', 'desconocido', 1, 1, '2961076448', 'cristian@hotmail.com', 52, 2),
+(151, '077', 'AnOaaqAOrEReLW68dONP1CaAscF/4BaspIhpkiR45gg=', 'Kevin', 'desconocido', 'desconocido', 'El Juile', 'desconcodio', 1, 1, '2971076448', 'kevin@hotmail.com', 53, 1),
+(152, '078', 'L9mm7OUu8DrU0Mkm0wS0JT5DUPrmYqot0g2JehC21hI=', 'Leo', 'desconocido', 'desconocido', 'El Gallito', 'desconocido', 1, 1, '2061076448', 'leo@hotmail.com', 54, 1),
+(153, '079', 'zhJrMNeV0T6IpXX6k7xjFfY66wWhytTr0FeK+HcZIh4=', 'Edson', 'Partida', 'Desconocido', 'Conocido', 'Junto a la Iglesia', 1, 1, '2961076448', 'desconodio@desconocido.com', 55, 1),
+(154, '080', '7Rbo9nUCbhe2CqdL6nCelH4GaS5THBT+1/46UxJTUnA=', 'Erasmo', 'Desconocido', 'Desconocido', 'Conocido', 'Tiendita Faizan Iglesia', 1, 1, '2961076448', 'desconocido@desconocido.com', 55, 1),
+(155, '081', 'JEzuFmPyIHJrjibFxM+uC5Kc0oqx868Ms0HTNXdxQco=', 'Juana', 'Desconocido', 'Desconocido', 'Conocido', 'Junto a Erasmo Maestra Ingles', 1, 1, '2961076448', 'desconocido@desconocido.com', 55, 1),
+(156, '082', 'x1N90ZhMqNmLPXhsoaam6kcXPGGqmAbUO0geJAGPzzw=', 'Marisela', 'desconocido', 'desconocido', 'Conocido', 'En la curva de faizan Dos pisos Naranja', 1, 1, '2961076448', 'desconocido@desconocido.com', 55, 1),
+(157, '083', 'nRpajyU3tCMYGRwX+70iufBmorx61y7Repwd+uCLYjE=', 'Marisela', 'desconocido', 'desconocido', 'Conocido', 'Vecino Marisela', 1, 1, '2961076448', 'desconocido@desconocido.com', 55, 1),
+(158, '085', '0lF0v2KeJgpRn/xIXc7jToStIN1jjU58HTTtA9yfRrs=', 'Armando', 'Desconocido', 'Desconocido', 'conocido', 'Para Faizan Casa Rosada 2pisos', 1, 1, '2961076448', 'desconocido@desconocido.com', 55, 1),
+(159, '086', 'TKh7/Vy1jog7+jIJJPIdt6lS+R/IOH7hloyo208xrAg=', 'Gazos', 'desconocido', 'desconocido', 'Conocido', 'Casa enmedio faizan ceiba carro de caña patio', 1, 1, '2961076448', 'desconocido@desconocido', 55, 1),
+(160, '087', '8AQvWcYUdGmzQtyIZkqSJNhq38iqx1VHuSoN3RQ9ImU=', 'Karla', 'desconocido', 'desconocido', 'desconocido', 'ultima casa salida a la vibora', 1, 1, '2961076448', 'desconocido@desconocido.com', 55, 1),
+(161, '088', 'bcxzGLRzj6id/aL5m7Y16KkCwu/09mRD1VG/jnrXGps=', 'Secundaria', 'Desconocido', 'desconocido', 'Conocido', 'Secundaria Faizan', 1, 1, '2961076448', 'desconocido@desconocido.com', 55, 1),
+(162, '089', 'zwsAXdUJbvDvBc4ZIBrG7qUby81KYTzct63/sCZpH28=', 'Uriel', 'desconocido', 'desconocido', 'conocido', 'Casa rosada salida de la ceiba', 1, 1, '2961076446', 'desconocido@desconocido.com', 55, 1),
+(163, '174', 'lKMEaJ+wowacUZ/MMavLWX6qkKC8fsoQVi940gel2Lg=', 'Esther', 'Hernandez', 'Hernandez', 'Conocido', 'Junto a tienda de liz salida de la ceiba', 1, 1, '2965936153', 'pendiente@pendiente.com', 56, 3),
+(164, '175', 'eI35zinLpduCGWonhHCF81VrQy5k5BJfTl3R0Uu+lZQ=', 'Mareli', 'Diaz', 'Marquez', 'Conocido', 'Casa Amarilla Entrada', 1, 1, '2293637876', 'pendiente@pendiente.com', 33, 3),
+(165, '176', 'My6byCvoMYzDikAxnCBM3GrAvACKR1LyAbZpFmBu5UI=', 'Leidy', 'Ronzon', 'desconocido', 'Conocido', 'Tienda Salida a Juile ', 1, 1, '2961076448', 'desconocido@desconocido.com', 33, 3),
+(166, '093', 'uP8VjTnrsBXZEJy0DttF/9tsxOwvLRR+5Dhxv8tarco=', 'Elizabeth', 'desconocido', 'desconocido', 'Conocido', 'Tienda Carretera Elizabeth Salida Hatillo', 1, 1, '2961076448', 'desconocido@desconocido.com', 56, 3),
+(167, '096', 'H2Yw8pkFQLShbcnNTsTiWLCCALa5veBSMn1S1qfLeCI=', 'Norma', 'Murillo', 'Desconocido', 'Conocido', 'Maestra Norma', 1, 1, '2961076448', 'desconocido@desconocido.com', 56, 2),
+(168, '177', '6iM8npnabmLDITlst7YDQbgm/zHrokK1Cd0gnplFPyY=', 'Roxana', 'rebolledo', 'Vargas', 'Conocido', 'Frente a Leidy Tienda', 1, 1, '2851004139', 'lalo_chivas_19@hotmail.com', 33, 3),
+(169, '161', '2YG/5qRpjBJTJvt3F9SBXjOA6bzcmGc55ivU3rbqXoo=', 'Valeria', 'BAutista', 'Velazquez', 'Conocido', 'Junto al Canal', 1, 1, '2961059965', 'desconnocido@desconocido.com', 60, 1),
+(170, '150', 'NUzy3gcn4oKpK+EQcVr80z/18T2Q5l/FmzSLcPgm6X8=', 'Belem', 'Desconocido', 'desconocido', 'Conocido', 'Tienda Belem', 1, 1, '2961076448', 'desconocido@desconocido.com', 60, 1);
 
 --
 -- Índices para tablas volcadas
@@ -364,7 +423,7 @@ ALTER TABLE `cortes`
 -- AUTO_INCREMENT de la tabla `detalletickets`
 --
 ALTER TABLE `detalletickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 --
 -- AUTO_INCREMENT de la tabla `estadopago`
 --
@@ -374,12 +433,12 @@ ALTER TABLE `estadopago`
 -- AUTO_INCREMENT de la tabla `historialpagos`
 --
 ALTER TABLE `historialpagos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 --
 -- AUTO_INCREMENT de la tabla `localidades`
 --
 ALTER TABLE `localidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT de la tabla `sistema`
 --
@@ -389,12 +448,12 @@ ALTER TABLE `sistema`
 -- AUTO_INCREMENT de la tabla `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 --
 -- Restricciones para tablas volcadas
 --

@@ -371,7 +371,7 @@
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Nombre</th>
+                                            <th>ID Cliente</th>
                                             <th>Fecha de pago</th>
                                             <th>Comprobante</th>
                                             <th>Referencia</th>
@@ -407,7 +407,7 @@
 				</td>
 				<td>'.$item["Referencia"].'</td>
 				<td><p class="'.$class.'">'.$item["Estado"].'</p></td>
-				<td>'.$item["NomConcepto"].'</td>
+				<td>'.$item["concepto"].'</td>
 				<td>'.$item["observaciones"].'</td>
 				<td><a href="panel.php?modulo='.$modulo.'&action=ver&id='.$hash.'"><button type="button" class="btn btn-success">Ver</button></a></td>
 

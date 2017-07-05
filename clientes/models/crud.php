@@ -29,6 +29,17 @@
 		$stmt->close();
 		}
 
+		public function obtenerUsuarioModel($id){
+			$stmt = Conexion::conectar()->prepare("select * from usuarios where id=:id");
+			$stmt->bindParam(":id", $id, PDO::PARAM_INT);
+			$respuesta = $stmt->execute();
+			$respuesta = $stmt->fetch();
+
+			return $respuesta;
+			$stmt->close();
+
+		}
+
 
 
 		#Obtener localidades
@@ -279,10 +290,9 @@
 
 		public function verPagosModel($idusuariomodel, $tabla){
 			$stmt = Conexion::conectar()->prepare("
-				select historialpagos.id, usuarios.Nombre, historialpagos.fecha, historialpagos.comprobante, historialpagos.Referencia, estadopago.Estado, conceptos.NomConcepto, historialpagos.observaciones from $tabla 
+				select historialpagos.id, usuarios.Nombre, historialpagos.fecha, historialpagos.comprobante, historialpagos.Referencia, estadopago.Estado, historialpagos.concepto, historialpagos.observaciones from $tabla 
 				inner join usuarios on historialpagos.id_usuario=usuarios.id  and usuarios.id=:id
 				inner join estadopago on historialpagos.EstadoPago=estadopago.id
-				inner join conceptos on historialpagos.Concepto=conceptos.id
 				");
 			$stmt->bindParam(":id", $idusuariomodel, PDO::PARAM_INT);
 			$respuesta = $stmt->execute();

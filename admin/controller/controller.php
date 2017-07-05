@@ -315,7 +315,7 @@
 				&delete=1"><button type="button" class="btn btn-danger	">Eliminar</button>--> </a></td>
 				 
 				
-				<td><a href="#"><button type="button" class="btn btn-danger	">Eliminar</button></a></td>
+				<td><a href="#"><button type="button" class="btn btn-danger btneliminar" data-toggle="modal" data-target="#notificacion" id="'.$hash.'">Eliminar</button></a></td>
 			</tr>';
 
 			}
@@ -689,7 +689,7 @@
 					<td>'.$item["fecha"].'</td>
 					<td>'.$item["Referencia"].'</td>
 					<td><p class="'.$class.'">'.$item["Estado"].'</p></td>
-					<td>'.$item["NomConcepto"].'</td>
+					<td>'.$item["concepto"].'</td>
 					<td>$'.$item["Importe"].'</td>
 					<td><a href="panel.php?modulo='.$modulo.'&action=ver&id='.$hash.'"><button type="button" class="btn btn-success">Ver</button></a></td>
 					</tr>';
@@ -1091,6 +1091,7 @@
 			public function eliminarUsuarioController($idusuario){
 				$iddesencriptado = Datos::desencriptar($idusuario);
 				$respuesta = Datos::eliminarUsuarioModel($iddesencriptado);
+
 				if($respuesta==4){
 						echo '
 						<div class="alert alert-success">
