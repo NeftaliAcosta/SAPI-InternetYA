@@ -1,15 +1,10 @@
 <?php
-
 	session_start();
-
 	if(!$_SESSION["validar"]){
-
 		header("location:index.php");
 		exit();
-
 	}
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,7 +18,6 @@
     <meta name="author" content="">
 
     <title>Sistema de Gestión de Pagos</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -49,11 +43,7 @@
     <![endif]-->
 
     <link rel="stylesheet" href="views/css/bootstrap-select.min.css">
-
-
-
-
-
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 </head>
 
 <body>
@@ -182,6 +172,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="views/js/bootstrap-select.min.js"></script>
     <script src="views/js/tinymce.min.js"></script>
+     <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
@@ -229,6 +220,42 @@
     </div>
     <!-- fin Modal-->
 
+
+
+<script>
+var data = {
+  labels: ['Enero', 'Febero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agost', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    series: [
+    [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
+    [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
+  ]
+};
+
+var options = {
+  seriesBarDistance: 15
+};
+
+var responsiveOptions = [
+  ['screen and (min-width: 641px) and (max-width: 1024px)', {
+    seriesBarDistance: 10,
+    axisX: {
+      labelInterpolationFnc: function (value) {
+        return value;
+      }
+    }
+  }],
+  ['screen and (max-width: 640px)', {
+    seriesBarDistance: 5,
+    axisX: {
+      labelInterpolationFnc: function (value) {
+        return value[0];
+      }
+    }
+  }]
+];
+
+new Chartist.Bar('.ct-chart', data, options, responsiveOptions);
+</script>
 
 
 </body>

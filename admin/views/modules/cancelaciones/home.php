@@ -17,6 +17,7 @@
                                             <th>Concepto</th>
                                             <th>Importe</th>
                                             <th>Ver</th>
+                                            <th>Eliminar</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -1,5 +1,5 @@
 <?php 
-	if(isset( $_GET['id'])){
+	if(mysql_real_escape_string(isset( $_GET['id']))){
 
 				$respuesta = Datos::validarID($_GET['id']);
 				$id=$respuesta["ID"];
@@ -23,8 +23,8 @@
 			}
 
 
-	if(isset($_POST["estadoActualizar"])){
-		$password = Datos::encriptar($_POST["passwordActualizar"]);
+	if(mysql_real_escape_string(isset($_POST["estadoActualizar"]))){
+		$password = Datos::encriptar(mysql_real_escape_string($_POST["passwordActualizar"]));
 		$nNombre = $_POST["nombreActualizar"];
 		$nApellido1 = $_POST["apellido1Actualizar"];
 		$nApellido2 = $_POST["apellido2Actualizar"];

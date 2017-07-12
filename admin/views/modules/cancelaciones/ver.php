@@ -1,5 +1,5 @@
 <?php 
-	if(isset( $_GET['id'])){
+	if(mysql_real_escape_string(isset( $_GET['id']))){
 		$a =Datos::validarPagoModel($_GET['id']);
 
 		$hash =urlencode($_GET['id']);
@@ -7,7 +7,7 @@
 		if($a >0){
 			echo '
 			<div class="formatopago">
-	<div class="row ">
+			<div class="row ">
 			<div class="col-sm-6">
 				<h4>Detalles de pago</h4>
 				<hr>
@@ -46,4 +46,3 @@
 
 
 	}
- ?>

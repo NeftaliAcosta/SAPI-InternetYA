@@ -1,7 +1,6 @@
 <?php 
 	if(isset( $_GET['id'])){
 		$a =Datos::validarPagoModel($_GET['id']);
-
 		$hash =urlencode($_GET['id']);
 		$idu = urlencode(Datos::encriptar($a["id_usuario"]));
 		if($a >0){
@@ -46,4 +45,3 @@
 
 
 	}
- ?>

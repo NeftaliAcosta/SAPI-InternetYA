@@ -1,9 +1,9 @@
 <?php 
 	if(isset($_POST["usuarioTicket"])){
-		$idusuario = $_POST["usuarioTicket"];
-		$asunto = $_POST["asuntoTicket"];
-		$prioridad = $_POST["prioridadTicket"];
-		$mensaje = $_POST["mensajeTicket"];
+		$idusuario =  mysql_real_escape_string($_POST["usuarioTicket"]);
+		$asunto =  mysql_real_escape_string($_POST["asuntoTicket"]);
+		$prioridad =  mysql_real_escape_string($_POST["prioridadTicket"]);
+		$mensaje =  mysql_real_escape_string($_POST["mensajeTicket"]);
 		$clase = 0;
 
 		$instancia = new MvcController();

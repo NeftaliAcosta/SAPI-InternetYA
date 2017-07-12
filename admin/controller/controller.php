@@ -45,19 +45,22 @@
 
 		public function ingresoAdminController(){
 			
-			if(isset($_POST["usuarioIngreso"]) and isset($_POST["passwordIngreso"]) and $_POST["usuarioIngreso"] != "" and $_POST["passwordIngreso"] != ""   ){
+			if(mysql_real_escape_string(isset($_POST["usuarioIngreso"])) and 
+				mysql_real_escape_string(isset($_POST["passwordIngreso"])) and 
+				mysql_real_escape_string($_POST["usuarioIngreso"]) != "" and
+				mysql_real_escape_string($_POST["passwordIngreso"]) != ""   ){
 
 				$encriptar = Datos::encriptar($_POST["passwordIngreso"]);
 				$datosController = array( "usuario" => $_POST["usuarioIngreso"], 
 									      "password" => $encriptar);
 				$respuesta = Datos::ingresoAdminModel($datosController, "usuarios");
 				if($respuesta=="no"){
-				 echo "Datos incorrectos";
+				 echo "<b>Datos incorrectos</b>";
 				}
 				else{
 					session_start();
 					$_SESSION["validar"] = true;
-					$_SESSION["id"] = $respuesta["id"];
+					$_SESSION["id"] = Datos::encriptar($respuesta["id"]);
 					header("location:panel.php");
 				}
 			}
@@ -220,19 +223,19 @@
 		#Crear Usuario
 		#-------------------------
 		public function crearUsuarioController(){
-			if(isset($_POST["usuarioCrear"]) and 
-				isset($_POST["passwordCrear"]) and 
-				isset($_POST["privilegioCrear"]) and 
-				isset($_POST["nombreCrear"]) and
-				isset($_POST["apellido1Crear"]) and
-				isset($_POST["apellido2Crear"]) and
-				isset($_POST["emailCrear"]) and
-				isset($_POST["direccionCrear"]) and
-				isset($_POST["referenciaCrear"]) and
-				isset($_POST["localidadCrear"]) and
-				isset($_POST["telefonoCrear"]) and
-				isset($_POST["corteCrear"])
-				){
+			if( mysql_real_escape_string(isset($_POST["usuarioCrear"])) and 
+				mysql_real_escape_string(isset($_POST["passwordCrear"])) and 
+				mysql_real_escape_string(isset($_POST["privilegioCrear"])) and 
+				mysql_real_escape_string(isset($_POST["nombreCrear"])) and
+				mysql_real_escape_string(isset($_POST["apellido1Crear"])) and
+				mysql_real_escape_string(isset($_POST["apellido2Crear"])) and
+				mysql_real_escape_string(isset($_POST["emailCrear"])) and
+				mysql_real_escape_string(isset($_POST["direccionCrear"])) and
+				mysql_real_escape_string(isset($_POST["referenciaCrear"])) and
+				mysql_real_escape_string(isset($_POST["localidadCrear"])) and
+				mysql_real_escape_string(isset($_POST["telefonoCrear"])) and
+				mysql_real_escape_string(isset($_POST["corteCrear"])) )
+				{
 					$normal=$_POST["passwordCrear"];
 					$encriptar = Datos::encriptar($_POST["passwordCrear"]);
 
@@ -293,10 +296,7 @@
 		#---------------------------------
 
 		public function verUsuarioController($idusuario){
-
 			$respuesta = Datos::verUsuarioModel($idusuario);
- 
-
 			foreach($respuesta as $row => $item){
 			$idencriptado = Datos::encriptar($item['id']);
 			$hash =urlencode($idencriptado);			
@@ -738,7 +738,12 @@
 					<td>'.$item["Concepto"].'</td>
 					<td>$'.$item["Importe"].'</td>
 					<td><a href="panel.php?modulo=cancelaciones&action=ver&id='.$hash.'"><button type="button" class="btn btn-success">Ver</button></a></td>
+					
+					<td><a href="#"><button type="button" id="'.$hash.'" class="btn btn-danger btneliminarpago" data-toggle="modal"  data-target="#notificacion"> Eliminar</button></a></td>
+					</tr>
 					</tr>';
+
+					
 				}
 			}
 
@@ -802,7 +807,6 @@
 			
 			
 			public function estadisticaController(){
-				
 				$clientes = Datos::obtenerClientesModel();
 				$fpagadas = Datos::obtenerFacturasModel();
 				$fpendientes = Datos::obtenerPendientesModel();
@@ -986,7 +990,7 @@
 
 					 if($respuesta==1){
 					 	echo '
-						<div class="alert alert-danger">
+						<div class="alert alert-success">
 							Ticket cerrado correctamente.
 						</div>
 						<script type="text/javascript">
@@ -1007,6 +1011,7 @@
 
 
 			public function mensajeTicketController($idTicket,  $idUsuario, $mensaje, $clase){
+				$idUsuario= Datos::desencriptar($idUsuario);
 				$nmensaje = $this->saltoLinea($mensaje);  
 				$respuesta = Datos::mensajeTicketModel($idTicket, $idUsuario, $nmensaje, $clase);
 				 if($respuesta==1){
@@ -1086,6 +1091,27 @@
 					 		';
 				 }
 				
+			}
+
+
+
+			public function eliminarPagoController($idpago){
+				$iddesencriptado = Datos::desencriptar($idpago);
+				$respuesta = Datos::eliminarPagoModel($iddesencriptado);
+				if ($respuesta==2){
+					echo  '
+					<div class="alert alert-success">
+		            	Pago eliminado correctamente.
+		            </div>
+		            <script type="text/javascript">
+						  window.setTimeout(function(){
+						        window.location="panel.php?modulo=cancelaciones";
+
+						    }, 1000);
+						    </script>
+					';
+				}
+
 			}
 
 			public function eliminarUsuarioController($idusuario){
@@ -1206,7 +1232,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
             ';
 		}
 
@@ -1291,6 +1317,5 @@
 		}
 }
 
- ?>
 
 

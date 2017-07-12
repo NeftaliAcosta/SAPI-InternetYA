@@ -6,7 +6,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <!--<div class="table-responsive" >-->
+                            <div class="table-responsive" >   
                                  <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables"  >
                                     <thead>
                                         <tr>
@@ -27,7 +27,7 @@
 										?>
                                     </tbody>
                                 </table>
-                           <!-- </div>-->
+                            </div>  
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->

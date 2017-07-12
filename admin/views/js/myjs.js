@@ -172,6 +172,11 @@ $(document).ready(function(){
         $('#btncontinuar').attr("href", "panel.php?modulo=clientes&action=editar&id="+id+"&var=2");
 
     });
+    $('.btneliminarpago').click(function() {
+        var id = $(this).attr("id");
+        $('#btncontinuar').attr("href", "panel.php?modulo=cancelaciones&action=editar&id="+id+"&var=2");
+
+    });
 
   $('.btnpago').click(function() {
       var imagen = $(this).attr("id");

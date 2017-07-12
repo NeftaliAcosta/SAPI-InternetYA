@@ -1,5 +1,5 @@
 <?php 
-	if(isset($_GET["var"]) && isset($_GET["id"])){
+	if(mysql_real_escape_string(isset($_GET["var"])) && mysql_real_escape_string(isset($_GET["id"]))){
 		$var=$_GET["var"];
 		$idusuario = urlencode($_GET["id"]);
 		if($var==1){
@@ -12,7 +12,7 @@
         	}, 1000);
         	</script>';
 		}
-		if($var==2){
+		else if($var==2){
 			$idusuario= urldecode($idusuario);
 			$eliminar = new MvcController();
 			$eliminar -> eliminarUsuarioController($idusuario);
@@ -25,14 +25,7 @@
 			';
 		}
 	}
-	elseif(isset($_GET["delete"])  && isset($_GET["id"])){
-		$accion=$_GET["delete"];
-		if($accion==1){
-			$idusuario = $_GET["id"];
-			$a = new MvcController;
-			$a ->eliminarUsuarioController($idusuario);
-		}
-	}
+
 	else{
 		echo  '
 			<div class="alert alert-danger">
@@ -40,6 +33,6 @@
             </div>
 			';
 	}
- ?>
+ 
 
 

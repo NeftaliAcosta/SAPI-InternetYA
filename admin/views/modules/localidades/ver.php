@@ -2,7 +2,8 @@
 	if(isset( $_GET['id'])){
 		$id = $_GET['id'];
 		$localidad = Datos::selectlocalidad($id);
-		echo '
+		if($localidad != false){
+					echo '
 				<div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -45,21 +46,24 @@
             </div> 
 		
 		';
-
-
-
+	}else{
+		echo '<div class="alert alert-danger">
+                Datos incorrectos
+            </div>';
+	}	
 	
-		
-			if(isset($_POST["nlocalidad"])){
-				$localidad = $_POST["nlocalidad"];
-				if(isset($_POST["nreferencia"])){
-						$referencia = $_POST["nreferencia"];
-					}else{
-						$referencia = "Ninguna";
-					}
-					$instancia = new MvcController();
-					$instancia -> actualizarLocalidadController($id,$localidad, $referencia);
-				}
+
+
+	if(isset($_POST["nlocalidad"])){
+		$localidad = $_POST["nlocalidad"];
+			if(isset($_POST["nreferencia"])){
+				$referencia = $_POST["nreferencia"];
+			}else{
+				$referencia = "Ninguna";
+			}
+		$instancia = new MvcController();
+		$instancia -> actualizarLocalidadController($id,$localidad, $referencia);
+	}
 	}else{
 		echo '
 			<div class="alert alert-danger">

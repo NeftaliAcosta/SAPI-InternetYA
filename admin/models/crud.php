@@ -238,29 +238,40 @@
 		#----------------------------------------------------
 
 		public function verUsuarioModel($idusuario){
+			$idusuario = Datos::desencriptar($idusuario);
 			$stmt = Conexion::conectar()->prepare("select usuarios.id, usuarios.usuario, usuarios.Nombre, usuarios.Apellido1, usuarios.Apellido2, usuarios.Direccion, usuarios.Referencia, usuarios.Telefono, localidades.Nomlocalidad,  cortes.FechaCorte from usuarios inner join localidades on usuarios.localidad=localidades.id  inner join cortes on usuarios.FechaCorte=cortes.id where usuarios.id !=:id order by id");
 
 			$stmt->bindParam(":id", $idusuario, PDO::PARAM_STR);
 			$stmt->execute();
-
 			return $stmt->fetchAll();
-
 			$stmt->close();
 		}
 
 
 		public function validarID($id){
 			$idd = Datos::desencriptar($id);
-
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM usuarios WHERE id=:id");
 			$stmt->bindParam(":id", $idd, PDO::PARAM_INT);
-
 			$respuesta = $stmt->execute();
 			$respuesta = $stmt->fetch();
+			if(count($respuesta["usuario"]) > 0){
+				return $respuesta;
+			}
+			else{
+				return 0;
+			}
+		}
 
-
-				if(count($respuesta["usuario"]) > 0){
-					return $respuesta;
+		public function validarPagoCanceladoModel($id){
+			$idd = Datos::desencriptar($id);
+			$stmt = Conexion::conectar()->prepare("
+				select * from historialpagos where id=:id
+				");
+			$stmt->bindParam(":id", $idd, PDO::PARAM_INT);
+			$respuesta = $stmt->execute();
+			$respuesta = $stmt->fetch();
+				if(count($respuesta["id"]) > 0){
+					return 1;
 				}
 				else{
 					return 0;
@@ -270,6 +281,7 @@
 
 
 		public function validarPagoModel($id){
+			$id=mysql_real_escape_string($id);
 			$idd = Datos::desencriptar($id);
 			$stmt = Conexion::conectar()->prepare("
 				select historialpagos.id,  usuarios.usuario, usuarios.Nombre, usuarios.Apellido1, usuarios.FechaCorte, historialpagos.id_usuario, historialpagos.fecha,  cortes.FechaCorte, historialpagos.comprobante, historialpagos.Referencia, estadopago.Estado, historialpagos.Importe, historialpagos.Concepto, historialpagos.observaciones from historialpagos 
@@ -584,6 +596,28 @@
 			return $myidfactura;
 		}
 
+		public function eliminarPagoModel($idpago){
+			$contador=0;
+			$stmt=Conexion::conectar()->prepare("SELECT id, comprobante FROM historialpagos WHERE id=:id");
+			$stmt->bindParam(":id", $idpago, PDO::PARAM_INT);
+			if($stmt->execute()){
+				$respuesta = $stmt->fetch();
+				$foto = $respuesta["comprobante"];
+				$ruta = "..\imagenes/$foto";
+				unlink($ruta);
+				$contador = $contador + 1;
+			}
+
+			$stmt= Conexion::conectar()->prepare("delete from historialpagos where id=:id");
+			$stmt->bindParam(":id", $idpago, PDO::PARAM_INT);
+			if($stmt->execute()){
+				$contador = $contador + 1;
+
+			}
+
+			return $contador;
+			
+		}
 		
 
 		public function eliminarUsuarioModel($idUsuario){
@@ -715,4 +749,4 @@
 
 
 }
- ?>
+ 

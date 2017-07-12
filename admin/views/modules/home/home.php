@@ -1,13 +1,16 @@
+
+
 <?php 
     if(isset($_SESSION["id"])){
-        $id = Datos::encriptar($_SESSION["id"]);
-        $r = Datos::validarID($id);
+        /*$id = Datos::encriptar($_SESSION["id"]);*/
+        $r = Datos::validarID($_SESSION["id"]);
         echo '<h3> Bienvenid@ '.$r["Nombre"] . ' '.$r["Apellido1"].'</h3>';
     } 
     $a = new MvcController();
     $a -> estadisticaController();
 
 ?>
+    <!--<div class="ct-chart ct-perfect-fourth"></div>-->
 
     <div class="panel panel-default">
                         <div class="panel-heading">
